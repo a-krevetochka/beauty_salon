@@ -18,26 +18,25 @@ import org.springframework.web.filter.CorsFilter;
 
 
 @Configuration
-//@EnableGlobalMethodSecurity(prePostEnabled = true)
 @AllArgsConstructor
 public class SecurityConfig {
     private final CorsFilter corsFilter;
     private final AuthorizationFilter authorizationFilter;
 
-    @Bean
-    public SecurityFilterChain configure(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity
-                .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/**").authenticated()
-                        .anyRequest().authenticated()
-                )
-//                .addFilterBefore(corsFilter, SessionManagementFilter.class)
-                .addFilterBefore(authorizationFilter, UsernamePasswordAuthenticationFilter.class);
-
-
-        return httpSecurity.build();
-    }
+//    @Bean
+//    public SecurityFilterChain configure(HttpSecurity httpSecurity) throws Exception {
+//        httpSecurity
+//                .csrf(AbstractHttpConfigurer::disable)
+//                .authorizeHttpRequests(authorize -> authorize
+//                        .requestMatchers("/**").authenticated()
+//                        .anyRequest().authenticated()
+//                )
+////                .addFilterBefore(corsFilter, SessionManagementFilter.class)
+//                .addFilterBefore(authorizationFilter, UsernamePasswordAuthenticationFilter.class);
+//
+//
+//        return httpSecurity.build();
+//    }
 
 }
 
