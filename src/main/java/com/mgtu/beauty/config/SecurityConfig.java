@@ -18,7 +18,7 @@ import org.springframework.web.filter.CorsFilter;
 
 
 @Configuration
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+//@EnableGlobalMethodSecurity(prePostEnabled = true)
 @AllArgsConstructor
 public class SecurityConfig {
     private final CorsFilter corsFilter;
@@ -32,7 +32,7 @@ public class SecurityConfig {
                         .requestMatchers("/**").authenticated()
                         .anyRequest().authenticated()
                 )
-                .addFilterBefore(corsFilter, SessionManagementFilter.class)
+//                .addFilterBefore(corsFilter, SessionManagementFilter.class)
                 .addFilterBefore(authorizationFilter, UsernamePasswordAuthenticationFilter.class);
 
 
