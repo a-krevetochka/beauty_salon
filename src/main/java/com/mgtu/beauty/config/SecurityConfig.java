@@ -18,10 +18,10 @@ import org.springframework.web.filter.CorsFilter;
 
 
 @Configuration
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableWebSecurity
 @AllArgsConstructor
 public class SecurityConfig {
-//    private final CorsFilter corsFilter;
+    private final CorsFilter corsFilter;
     private final AuthorizationFilter authorizationFilter;
 
     @Bean
@@ -29,10 +29,10 @@ public class SecurityConfig {
         httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/**").authenticated()
+                        .requestMatchers("/**").permitAll()
                         .anyRequest().authenticated()
                 )
-//                .addFilterBefore(corsFilter, SessionManagementFilter.class)
+                .addFilterBefore(corsFilter, SessionManagementFilter.class)
                 .addFilterBefore(authorizationFilter, UsernamePasswordAuthenticationFilter.class);
 
 

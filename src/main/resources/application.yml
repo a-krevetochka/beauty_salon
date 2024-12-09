@@ -22,6 +22,8 @@ logging:
   level:
     root: INFO
     com.example: DEBUG
+    org.springframework: ERROR
+    org.hibernate: TRACE
   file:
     name: myapp.log
     path: C:/Users/meteo/Desktop/museum_mgtu

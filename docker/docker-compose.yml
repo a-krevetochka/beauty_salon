@@ -12,6 +12,6 @@ services:
       - "54323:5432"
     volumes:
       - postgres-data:/var/lib/postgresql_salon/data_salon
-#      - ./migration.sql:/docker-entrypoint-initdb.d/migration.sql
+      - ./migration.sql:/docker-entrypoint-initdb.d/migration.sql
 volumes:
   postgres-data:
