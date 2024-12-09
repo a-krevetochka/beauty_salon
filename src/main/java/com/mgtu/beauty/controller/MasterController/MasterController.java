@@ -39,4 +39,10 @@ public class MasterController {
     public ResponseEntity<Response<List<GetMasterResponse>>> get(@PathVariable("serviceId") Integer serviceId){
         return ResponseEntity.ok(Response.<List<GetMasterResponse>>builder().data(service.getMastersByService(serviceId)).build());
     }
+
+    @GetMapping("get-all")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<Response<List<GetMasterResponse>>> getAll(){
+        return ResponseEntity.ok(Response.<List<GetMasterResponse>>builder().data(service.getAll()).build());
+    }
 }

@@ -31,4 +31,11 @@ public class MasterAndServiceRepository {
                 """.trim();
         return jdbcTemplate.query(sql, new MasterMapper(), serviceId);
     }
+
+    public List<Master> findAll() {
+        String sql = """
+                select * from masters
+                """.trim();
+        return jdbcTemplate.query(sql, new MasterMapper());
+    }
 }

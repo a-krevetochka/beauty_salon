@@ -34,4 +34,8 @@ public class MasterService {
     public List<GetMasterResponse> getMastersByService(Integer serviceId) {
         return masterAndServiceRepository.findByServiceId(serviceId).stream().map(m -> mapper.map(m, GetMasterResponse.class)).toList();
     }
+
+    public List<GetMasterResponse> getAll() {
+        return masterAndServiceRepository.findAll().stream().map(m -> mapper.map(m, GetMasterResponse.class)).toList();
+    }
 }
