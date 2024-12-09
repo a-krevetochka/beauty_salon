@@ -77,8 +77,7 @@ create table public.users
     role_name varchar(256) default 'USER'::character varying not null
         constraint role_fk
             references public.user_role (name)
-            on delete cascade,
-    role      bytea
+            on delete cascade
 );
 
 alter table public.users
@@ -111,3 +110,17 @@ create table public.records
 alter table public.records
     owner to salon;
 
+INSERT INTO user_role(name) values ('ADMIN');
+
+INSERT INTO user_role(name) values ('USER');
+
+INSERT INTO users (fio, phone, password, role_name) VALUES ('Белякова Софья Андреевна', '89872767937', '$2a$10$y16tkC2TkjasFBzLNOhQBOvemogx1woFJ.CIynIrnrbEDIfLsTwee', 'ADMIN');
+INSERT INTO time_slots (time_start, time_end) VALUES ('10:00:00', '11:00:00');
+INSERT INTO time_slots (time_start, time_end) VALUES ('11:00:00', '12:00:00');
+INSERT INTO time_slots (time_start, time_end) VALUES ('12:00:00', '13:00:00');
+INSERT INTO time_slots (time_start, time_end) VALUES ('13:00:00', '14:00:00');
+INSERT INTO time_slots (time_start, time_end) VALUES ('14:00:00', '15:00:00');
+INSERT INTO time_slots (time_start, time_end) VALUES ('15:00:00', '16:00:00');
+INSERT INTO time_slots (time_start, time_end) VALUES ('16:00:00', '17:00:00');
+INSERT INTO time_slots (time_start, time_end) VALUES ('17:00:00', '18:00:00');
+INSERT INTO time_slots (time_start, time_end) VALUES ('18:00:00', '19:00:00');
