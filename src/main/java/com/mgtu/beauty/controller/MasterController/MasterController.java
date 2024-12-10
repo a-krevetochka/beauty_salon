@@ -35,7 +35,7 @@ public class MasterController {
     }
 
     @GetMapping("get/{serviceId}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<Response<List<GetMasterResponse>>> get(@PathVariable("serviceId") Integer serviceId){
         return ResponseEntity.ok(Response.<List<GetMasterResponse>>builder().data(service.getMastersByService(serviceId)).build());
     }

@@ -24,7 +24,7 @@ public class RecordController {
     private final TokenService tokenService;
 
     @GetMapping("get-time-slots")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<Response<List<TimeSlot>>> getTimeSlots(@RequestParam("date") LocalDate date, @RequestParam("master_id") Integer masterId) {
         return ResponseEntity.ok(Response.<List<TimeSlot>>builder().data(recordService.getTimeSlots(date, masterId)).build());
     }
