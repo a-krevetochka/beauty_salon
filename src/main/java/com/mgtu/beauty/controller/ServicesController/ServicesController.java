@@ -42,7 +42,7 @@ public class ServicesController {
     }
 
     @GetMapping("get-all")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<Response<List<GetServicesResponse>>> getAllService() {
         return ResponseEntity.ok(Response.<List<GetServicesResponse>>builder().data(service.getAll()).build());
     }
