@@ -5,6 +5,7 @@ import com.mgtu.beauty.entity.Record;
 import com.mgtu.beauty.controller.RecordController.request.CreateRecordRequest;
 import com.mgtu.beauty.entity.TimeSlot;
 import com.mgtu.beauty.repository.RecordRepository;
+import com.mgtu.beauty.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,18 +16,19 @@ import java.util.List;
 @AllArgsConstructor
 public class RecordService {
     private final RecordRepository recordRepository;
+    private final UserRepository userRepository;
 
     public List<TimeSlot> getTimeSlots(LocalDate date, Integer masterId) {
         return recordRepository.findFreeTimeSlots(date, masterId);
     }
 
-    public void createRecord(CreateRecordRequest dto) {
+    public void createRecord(CreateRecordRequest dto, String phone) {
         recordRepository.save(Record.builder()
                 .serviceId(dto.getServiceId())
                 .timeSlotId(dto.getTimeSlotId())
                 .masterId(dto.getMasterId())
                 .date(dto.getDate())
-                .userId(dto.getUserId())
+                .userId(userRepository.findByPhone(phone).getId())
                 .build());
     }
 

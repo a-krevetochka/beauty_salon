@@ -16,6 +16,4 @@ public class CreateRecordRequest {
     private Integer serviceId;
     @NonNull
     private LocalDate date;
-    @NonNull
-    private Integer userId;
 }

@@ -31,8 +31,8 @@ public class RecordController {
 
     @PostMapping("create")
     @PreAuthorize("hasRole('USER')")
-    public ResponseEntity<Response<String>> create(@RequestBody CreateRecordRequest dto) {
-        recordService.createRecord(dto);
+    public ResponseEntity<Response<String>> create(@RequestHeader("authorization") String token, @RequestBody CreateRecordRequest dto) {
+        recordService.createRecord(dto, tokenService.getPhoneFromToken(token.replace("Bearer ", "").trim()));
         return ResponseEntity.ok(Response.<String>builder().message("Вы успешно записались на прием").build());
     }
 
@@ -51,7 +51,7 @@ public class RecordController {
                 .build());
     }
     @DeleteMapping("delete/{recordId}")
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("isAuthenticated()")
     public ResponseEntity<Response<String>> delete(@PathVariable("recordId") Integer recordId) {
         recordService.deleteRecord(recordId);
         return ResponseEntity.ok(Response.<String>builder().message("Запись отменена").build());

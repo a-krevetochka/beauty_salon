@@ -8,7 +8,7 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
   datasource:
-    url: jdbc:postgresql://localhost:54323/salon
+    url: jdbc:postgresql://localhost:5432/salon
     username: salon
     password: 1234
     driver-class-name: org.postgresql.Driver
