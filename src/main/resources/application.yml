@@ -26,4 +26,4 @@ logging:
     org.hibernate: TRACE
   file:
     name: myapp.log
-    path: C:/Users/meteo/Desktop/museum_mgtu
+    path: C:/Users/meteo/Desktop/beauty

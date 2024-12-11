@@ -1,8 +1,5 @@
 package com.mgtu.beauty.controller.RecordController.response;
 
-import com.mgtu.beauty.entity.Master;
-import com.mgtu.beauty.entity.ServiceEntity;
-import com.mgtu.beauty.entity.TimeSlot;
 import lombok.Builder;
 import lombok.Data;
 

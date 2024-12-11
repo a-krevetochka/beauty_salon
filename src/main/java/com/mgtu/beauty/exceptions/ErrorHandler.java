@@ -13,7 +13,7 @@ public class ErrorHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<ExceptionResponse> handleAccessDeniedException(AccessDeniedException exception) {
         return ResponseEntity.status(403).body(ExceptionResponse.builder()
                 .message(exception.getMessage())
-                .cause(exception.getCause().toString())
+                .cause(String.valueOf(exception.getCause()))
                 .build());
     }
 
@@ -21,7 +21,7 @@ public class ErrorHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<ExceptionResponse> handleIllegalArgumentException(IllegalArgumentException exception) {
         return ResponseEntity.status(400).body(ExceptionResponse.builder()
                 .message(exception.getMessage())
-                .cause(exception.getCause().toString())
+                .cause(String.valueOf(exception.getCause()))
                 .build());
     }
 
@@ -30,7 +30,7 @@ public class ErrorHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<ExceptionResponse> handleRuntimeException(RuntimeException exception) {
         return ResponseEntity.status(500).body(ExceptionResponse.builder()
                         .message(exception.getMessage())
-                        .cause(exception.getCause().toString())
+                        .cause(String.valueOf(exception.getCause()))
                 .build());
     }
 }

@@ -30,6 +30,6 @@ public class Record {
     @NotNull
     private Integer serviceId;
 
+    @NotNull
     private Integer userId;
-
 }
